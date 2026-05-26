@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>She Can Foundation | Together We Can Change</title>
+  <meta name="description" content="Dedicated to empowering women and creating a more equitable society. We provide support, resources, and training.">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+
+    :root {
+      --bg-primary: #ffffff;
+      --bg-secondary: #f8fafc;
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --color-primary: #4f46e5;
+      --color-primary-hover: #4338ca;
+      --color-accent: #0ea5e9;
+      --color-accent-soft: #e0f2fe;
+      --card-bg: #ffffff;
+      --border-color: #e2e8f0;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+      --font-heading: 'Plus Jakarta Sans', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --transition-normal: 0.3s ease;
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+    }
+
+    body.dark-theme {
+      --bg-primary: #0b0f19;
+      --bg-secondary: #111827;
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --color-primary: #6366f1;
+      --color-primary-hover: #4f46e5;
+      --color-accent: #38bdf8;
+      --color-accent-soft: #0c4a6e;
+      --card-bg: #1f2937;
+      --border-color: #374151;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -4px rgba(0, 0, 0, 0.4);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      overflow-x: hidden;
+      transition: background-color var(--transition-normal), color var(--transition-normal);
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 80px;
+      background-color: rgba(var(--bg-primary), 0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      z-index: 1000;
+      transition: background-color var(--transition-normal), border-color var(--transition-normal);
+    }
+
+    body:not(.dark-theme) .navbar {
+      background-color: rgba(255, 255, 255, 0.8);
+    }
+
+    body.dark-theme .navbar {
+      background-color: rgba(11, 15, 25, 0.8);
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 100%;
+    }
+
+    .nav-brand {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-brand svg {
+      width: 26px;
+      height: 26px;
+      stroke: var(--color-primary);
+      stroke-width: 2.5;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 32px;
+    }
+
+    .nav-link {
+      font-weight: 500;
+      font-size: 15px;
+      color: var(--text-secondary);
+      transition: color var(--transition-normal);
+      position: relative;
+      padding: 8px 0;
+    }
+
+    .nav-link:hover {
+      color: var(--text-primary);
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--color-primary);
+      transition: width var(--transition-normal);
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .theme-toggle-btn {
+      background: none;
+      border: 1px solid var(--border-color);
+      cursor: pointer;
+      padding: 8px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-primary);
+      transition: all var(--transition-normal);
+    }
+
+    .theme-toggle-btn:hover {
+      background-color: var(--bg-secondary);
+      border-color: var(--color-primary);
+    }
+
+    .theme-toggle-btn svg {
+      width: 20px;
+      height: 20px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+    }
+
+    .theme-toggle-btn .sun-icon {
+      display: none;
+    }
+
+    .dark-theme .theme-toggle-btn .moon-icon {
+      display: none;
+    }
+
+    .dark-theme .theme-toggle-btn .sun-icon {
+      display: block;
+    }
+
+    .menu-toggle-btn {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text-primary);
+      padding: 4px;
+    }
+
+    .menu-toggle-btn svg {
+      width: 24px;
+      height: 24px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 28px;
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 15px;
+      border-radius: var(--radius-sm);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background-color: var(--color-primary);
+      color: #ffffff;
+      box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.2);
+    }
+
+    .btn-primary:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.3), 0 4px 6px -2px rgba(79, 70, 229, 0.3);
+      background-color: var(--color-primary-hover);
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--text-primary);
+      border: 2px solid var(--border-color);
+    }
+
+    .btn-secondary:hover {
+      transform: scale(1.05);
+      background-color: var(--bg-secondary);
+      border-color: var(--text-primary);
+      box-shadow: var(--shadow-md);
+    }
+
+    .section {
+      padding: 100px 0;
+    }
+
+    .hero {
+      padding-top: 180px;
+      padding-bottom: 100px;
+      position: relative;
+      overflow: hidden;
+      background-color: var(--bg-secondary);
+      transition: background-color var(--transition-normal);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .hero-content {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background-color: var(--color-accent-soft);
+      color: var(--color-accent);
+      padding: 6px 14px;
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+
+    .hero-badge svg {
+      width: 14px;
+      height: 14px;
+      stroke: currentColor;
+      stroke-width: 2.5;
+    }
+
+    .hero-title {
+      font-size: 54px;
+      line-height: 1.15;
+      color: var(--text-primary);
+      margin-bottom: 24px;
+    }
+
+    .hero-title span {
+      background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-description {
+      font-size: 18px;
+      color: var(--text-secondary);
+      margin-bottom: 40px;
+      max-width: 540px;
+    }
+
+    .hero-image-wrapper {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+    }
+
+    .hero-blob {
+      position: absolute;
+      width: 110%;
+      height: 110%;
+      background: radial-gradient(circle, rgba(79, 70, 229, 0.1) 0%, rgba(6, 182, 212, 0.05) 50%, transparent 100%);
+      z-index: 1;
+    }
+
+    .hero-img-card {
+      width: 100%;
+      max-width: 480px;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border-color);
+      z-index: 2;
+      overflow: hidden;
+      aspect-ratio: 4 / 3;
+    }
+
+    .hero-img-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-normal);
+    }
+
+    .hero-img-card:hover img {
+      transform: scale(1.03);
+    }
+
+    .about {
+      position: relative;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .about-visual {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .about-stat-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 32px 24px;
+      box-shadow: var(--shadow-sm);
+      transition: all var(--transition-normal);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .about-stat-card:nth-child(1) { animation-delay: 0.1s; }
+    .about-stat-card:nth-child(2) { animation-delay: 0.2s; }
+    .about-stat-card:nth-child(3) { animation-delay: 0.3s; }
+    .about-stat-card:nth-child(4) { animation-delay: 0.4s; }
+
+    .about-stat-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--color-primary);
+    }
+
+    .about-stat-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-sm);
+      background-color: var(--color-accent-soft);
+      color: var(--color-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .about-stat-icon svg {
+      width: 24px;
+      height: 24px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+    }
+
+    .about-stat-title {
+      font-size: 16px;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+
+    .about-stat-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    .about-content {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+    }
+
+    .section-badge {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-primary);
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .section-title {
+      font-size: 38px;
+      color: var(--text-primary);
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+
+    .about-text {
+      font-size: 16px;
+      color: var(--text-secondary);
+      margin-bottom: 32px;
+      line-height: 1.7;
+    }
+
+    .join {
+      background-color: var(--bg-secondary);
+      transition: background-color var(--transition-normal);
+    }
+
+    .join-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .join-content {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .join-text {
+      font-size: 16px;
+      color: var(--text-secondary);
+      margin-bottom: 32px;
+      line-height: 1.7;
+    }
+
+    .join-features {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 36px;
+    }
+
+    .join-feature-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    .join-feature-item svg {
+      width: 20px;
+      height: 20px;
+      color: var(--color-accent);
+    }
+
+    .join-image-wrapper {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border-color);
+      aspect-ratio: 4 / 3;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+    }
+
+    .join-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-normal);
+    }
+
+    .join-image-wrapper:hover img {
+      transform: scale(1.03);
+    }
+
+    .footer {
+      background-color: var(--bg-secondary);
+      border-top: 1px solid var(--border-color);
+      padding: 60px 0 30px;
+      transition: background-color var(--transition-normal), border-color var(--transition-normal);
+    }
+
+    .footer-grid {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-brand-side {
+      max-width: 320px;
+    }
+
+    .footer-brand-title {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 12px;
+    }
+
+    .footer-brand-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    .footer-contact-side {
+      text-align: right;
+    }
+
+    .footer-contact-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 16px;
+    }
+
+    .footer-contact-info {
+      font-size: 15px;
+      color: var(--text-secondary);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .footer-contact-item {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 8px;
+      transition: color var(--transition-normal);
+    }
+
+    .footer-contact-item:hover {
+      color: var(--color-primary);
+    }
+
+    .footer-contact-item svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border-color);
+      padding-top: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    .footer-bottom-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-bottom-link {
+      transition: color var(--transition-normal);
+    }
+
+    .footer-bottom-link:hover {
+      color: var(--color-primary);
+    }
+
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--transition-normal);
+      padding: 20px;
+    }
+
+    .modal.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .modal-content {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 40px;
+      max-width: 500px;
+      width: 100%;
+      position: relative;
+      box-shadow: var(--shadow-lg);
+      transform: translateY(30px);
+      transition: transform var(--transition-normal);
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .modal.active .modal-content {
+      transform: translateY(0);
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text-secondary);
+      padding: 4px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--transition-normal);
+    }
+
+    .modal-close-btn:hover {
+      background-color: var(--bg-secondary);
+      color: var(--text-primary);
+    }
+
+    .modal-close-btn svg {
+      width: 24px;
+      height: 24px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+    }
+
+    .modal-header {
+      margin-bottom: 28px;
+    }
+
+    .modal-title {
+      font-size: 24px;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+
+    .modal-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+
+    .form-input {
+      width: 100%;
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--text-primary);
+      outline: none;
+      transition: all var(--transition-normal);
+    }
+
+    .form-input:focus {
+      border-color: var(--color-primary);
+      background-color: var(--card-bg);
+      box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+    }
+
+    .form-select {
+      width: 100%;
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--text-primary);
+      outline: none;
+      transition: all var(--transition-normal);
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23475569'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      background-size: 16px;
+    }
+
+    .dark-theme .form-select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2394a3b8'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+    }
+
+    .form-select:focus {
+      border-color: var(--color-primary);
+      background-color: var(--card-bg);
+      box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+    }
+
+    .form-submit-btn {
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    .form-success-state {
+      display: none;
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    .form-success-icon {
+      background-color: #dcfce7;
+      color: #16a34a;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .dark-theme .form-success-icon {
+      background-color: #14532d;
+      color: #4ade80;
+    }
+
+    .form-success-icon svg {
+      width: 32px;
+      height: 32px;
+      stroke: currentColor;
+      stroke-width: 2.5;
+      fill: none;
+    }
+
+    .form-success-title {
+      font-size: 22px;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+    }
+
+    .form-success-desc {
+      font-size: 15px;
+      color: var(--text-secondary);
+    }
+
+    @keyframes fadeSlideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .hero-title {
+        font-size: 44px;
+      }
+      .about-grid, .join-grid {
+        gap: 40px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .section {
+        padding: 70px 0;
+      }
+
+      .navbar {
+        height: 70px;
+      }
+
+      .menu-toggle-btn {
+        display: block;
+      }
+
+      .nav-menu {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background-color: var(--card-bg);
+        border-bottom: 1px solid var(--border-color);
+        flex-direction: column;
+        padding: 30px 24px;
+        gap: 24px;
+        align-items: stretch;
+        box-shadow: var(--shadow-md);
+        transform: translateY(-100%);
+        opacity: 0;
+        pointer-events: none;
+        transition: transform var(--transition-normal), opacity var(--transition-normal);
+      }
+
+      .nav-menu.active {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .nav-actions {
+        flex-direction: column;
+        width: 100%;
+        gap: 16px;
+      }
+
+      .theme-toggle-btn {
+        align-self: center;
+        width: 48px;
+        height: 48px;
+      }
+
+      .nav-actions .btn {
+        width: 100%;
+      }
+
+      .hero {
+        padding-top: 120px;
+        padding-bottom: 70px;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+      }
+
+      .hero-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .hero-description {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .about-grid, .join-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .about-grid {
+        display: flex;
+        flex-direction: column-reverse;
+      }
+
+      .about-content, .join-content {
+        text-align: center;
+      }
+
+      .about-stat-card {
+        padding: 24px 16px;
+      }
+
+      .footer-grid {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 30px;
+      }
+
+      .footer-brand-side {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .footer-contact-side {
+        text-align: center;
+      }
+
+      .footer-contact-item {
+        justify-content: center;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-title {
+        font-size: 34px;
+      }
+      .about-visual {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="#" class="nav-brand">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+        </svg>
+        <span>She Can Foundation</span>
+      </a>
+
+      <nav class="nav-menu" id="navigation-menu">
+        <ul class="nav-links">
+          <li><a href="#" class="nav-link">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#join" class="nav-link">Join Us</a></li>
+        </ul>
+        <div class="nav-actions">
+          <button class="theme-toggle-btn" id="theme-switcher" aria-label="Toggle Dark Mode">
+            <svg class="moon-icon" viewBox="0 0 24 24">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+            <svg class="sun-icon" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="5"/>
+              <line x1="12" y1="1" x2="12" y2="3"/>
+              <line x1="12" y1="21" x2="12" y2="23"/>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+              <line x1="1" y1="12" x2="3" y2="12"/>
+              <line x1="21" y1="12" x2="23" y2="12"/>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+            </svg>
+          </button>
+          <button class="btn btn-primary open-donate-modal-btn">Donate</button>
+        </div>
+      </nav>
+
+      <button class="menu-toggle-btn" id="menu-toggle" aria-label="Toggle Menu">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+            <span>Empowerment & Inclusion NGO</span>
+          </div>
+          <h1 class="hero-title">Together We <span>Can Change</span></h1>
+          <p class="hero-description">We don't ask for much, just help us with what you can - Be it Money, Skill or Your Time.</p>
+          <button class="btn btn-primary open-donate-modal-btn">Donate Now</button>
+        </div>
+        <div class="hero-image-wrapper">
+          <div class="hero-blob"></div>
+          <div class="hero-img-card">
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80" alt="Students studying and collaborating together">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section about" id="about">
+      <div class="container about-grid">
+        <div class="about-visual">
+          <div class="about-stat-card">
+            <div class="about-stat-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <rect x="2" y="4" width="20" height="16" rx="2"/>
+                <line x1="12" y1="4" x2="12" y2="20"/>
+              </svg>
+            </div>
+            <h4 class="about-stat-title">Resources</h4>
+            <p class="about-stat-desc">Providing structural financial and educational support.</p>
+          </div>
+          <div class="about-stat-card">
+            <div class="about-stat-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+              </svg>
+            </div>
+            <h4 class="about-stat-title">Skills</h4>
+            <p class="about-stat-desc">Fostering active job skills and digital training programs.</p>
+          </div>
+          <div class="about-stat-card">
+            <div class="about-stat-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </div>
+            <h4 class="about-stat-title">Time</h4>
+            <p class="about-stat-desc">Volunteering and mentoring the next generation.</p>
+          </div>
+          <div class="about-stat-card">
+            <div class="about-stat-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+            </div>
+            <h4 class="about-stat-title">Impact</h4>
+            <p class="about-stat-desc">Fostering equitable networks and social justice.</p>
+          </div>
+        </div>
+        <div class="about-content">
+          <span class="section-badge">Our Mission</span>
+          <h2 class="section-title">Global Vision, Local Action</h2>
+          <p class="about-text">We are She Can Foundation, a non-governmental organization registered under the Indian Society Act, 1860, dedicated to empowering women and creating a more equitable society. We provide support, resources, and training to women in communities across the globe.</p>
+          <button class="btn btn-secondary open-join-modal-btn">Read Our History</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section join" id="join">
+      <div class="container join-grid">
+        <div class="join-content">
+          <span class="section-badge">Get Involved</span>
+          <h2 class="section-title">Join our TEAM</h2>
+          <p class="join-text">Make a difference in the lives of women in need. Whether you are passionate about education, health, or providing support during times of crisis, there is a place for you.</p>
+          <div class="join-features">
+            <div class="join-feature-item">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              <span>Weekly training & skills sharing</span>
+            </div>
+            <div class="join-feature-item">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              <span>Community network organization</span>
+            </div>
+            <div class="join-feature-item">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              <span>Global digital opportunities</span>
+            </div>
+          </div>
+          <button class="btn btn-primary open-join-modal-btn">Join Us</button>
+        </div>
+        <div class="join-image-wrapper">
+          <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?auto=format&fit=crop&w=800&q=80" alt="Mentors collaborating and smiling together">
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand-side">
+        <h4 class="footer-brand-title">She Can Foundation</h4>
+        <p class="footer-brand-desc">Dedicated to women empowerment, leadership training, advocacy, and equitable community growth since registration under the Indian Society Act, 1860.</p>
+      </div>
+      <div class="footer-contact-side">
+        <h4 class="footer-contact-title">Contact Us</h4>
+        <div class="footer-contact-info">
+          <a href="mailto:president@shecanfoundation.org" class="footer-contact-item">
+            <span>president@shecanfoundation.org</span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+          </a>
+          <a href="tel:+918283841830" class="footer-contact-item">
+            <span>+91-8283841830</span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 00.996.808H12a1 1 0 00.996-.808l.548-2.2A1 1 0 0115.48 3H18a2 2 0 012 2v3.28a1 1 0 01-.725.94l-2.2.548a1 1 0 00-.808.996V14a1 1 0 00.808.996l2.2.548a1 1 0 01.725.94V21a2 2 0 01-2 2h-3.28a1 1 0 01-.94-.725l-.548-2.2a1 1 0 00-.996-.808H12a1 1 0 00-.996.808l-.548 2.2a1 1 0 01-.94.725H5a2 2 0 01-2-2v-3.28a1 1 0 01.725-.94l2.2-.548a1 1 0 00.808-.996V10a1 1 0 00-.808-.996l-2.2-.548A1 1 0 013 8.28V5z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>&copy; 2026 She Can Foundation. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="#" class="footer-bottom-link">Privacy Policy</a>
+        <a href="#" class="footer-bottom-link">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="modal" id="donate-modal">
+    <div class="modal-content">
+      <button class="modal-close-btn" id="close-donate-modal" aria-label="Close Modal">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+      <div class="modal-header" id="donate-form-header">
+        <h3 class="modal-title">Support Our Cause</h3>
+        <p class="modal-desc">Your contribution creates direct opportunities, funding resources, training, and crisis support.</p>
+      </div>
+      <form id="donate-form">
+        <div class="form-group">
+          <label class="form-label" for="donate-name">Full Name</label>
+          <input class="form-input" type="text" id="donate-name" placeholder="E.g., Jane Doe" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="donate-email">Email Address</label>
+          <input class="form-input" type="email" id="donate-email" placeholder="E.g., jane@example.com" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="donate-amount">Contribution Type</label>
+          <select class="form-select" id="donate-amount" required>
+            <option value="" disabled selected>Select how you can help...</option>
+            <option value="money">Financial Contribution (Money)</option>
+            <option value="skill">Mentoring & Training (Skill)</option>
+            <option value="time">Volunteer Volunteering (Time)</option>
+          </select>
+        </div>
+        <button class="btn btn-primary form-submit-btn" type="submit">Complete Contribution</button>
+      </form>
+      <div class="form-success-state" id="donate-success-state">
+        <div class="form-success-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+        </div>
+        <h3 class="form-success-title">Thank You!</h3>
+        <p class="form-success-desc">We appreciate your willingness to help. Our administrative coordinators will get in touch with you shortly.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="join-modal">
+    <div class="modal-content">
+      <button class="modal-close-btn" id="close-join-modal" aria-label="Close Modal">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+      <div class="modal-header" id="join-form-header">
+        <h3 class="modal-title">Join Our Team</h3>
+        <p class="modal-desc">Become a part of the She Can Foundation. Share your passion for health, education, or crisis management.</p>
+      </div>
+      <form id="join-form">
+        <div class="form-group">
+          <label class="form-label" for="join-name">Full Name</label>
+          <input class="form-input" type="text" id="join-name" placeholder="E.g., Jane Doe" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="join-email">Email Address</label>
+          <input class="form-input" type="email" id="join-email" placeholder="E.g., jane@example.com" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="join-area">Area of Passion</label>
+          <select class="form-select" id="join-area" required>
+            <option value="" disabled selected>Select an area...</option>
+            <option value="education">Women's Education</option>
+            <option value="health">Healthcare Support</option>
+            <option value="crisis">Crisis Response</option>
+            <option value="advocacy">Leadership & Advocacy</option>
+          </select>
+        </div>
+        <button class="btn btn-primary form-submit-btn" type="submit">Submit Details</button>
+      </form>
+      <div class="form-success-state" id="join-success-state">
+        <div class="form-success-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+        </div>
+        <h3 class="form-success-title">Welcome Aboard!</h3>
+        <p class="form-success-desc">Your details have been registered. A member of our volunteer coordination panel will contact you in a few days.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const themeSwitcher = document.getElementById('theme-switcher');
+    const currentTheme = localStorage.getItem('theme');
+
+    if (currentTheme === 'dark') {
+      document.body.classList.add('dark-theme');
+    }
+
+    themeSwitcher.addEventListener('click', () => {
+      document.body.classList.toggle('dark-theme');
+      let theme = 'light';
+      if (document.body.classList.contains('dark-theme')) {
+        theme = 'dark';
+      }
+      localStorage.setItem('theme', theme);
+    });
+
+    const menuToggle = document.getElementById('menu-toggle');
+    const navigationMenu = document.getElementById('navigation-menu');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    menuToggle.addEventListener('click', () => {
+      navigationMenu.classList.toggle('active');
+    });
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        navigationMenu.classList.remove('active');
+      });
+    });
+
+    const donateModal = document.getElementById('donate-modal');
+    const openDonateButtons = document.querySelectorAll('.open-donate-modal-btn');
+    const closeDonateModal = document.getElementById('close-donate-modal');
+    const donateForm = document.getElementById('donate-form');
+    const donateFormHeader = document.getElementById('donate-form-header');
+    const donateSuccessState = document.getElementById('donate-success-state');
+
+    const resetDonateModal = () => {
+      donateForm.reset();
+      donateForm.style.display = 'block';
+      donateFormHeader.style.display = 'block';
+      donateSuccessState.style.display = 'none';
+    };
+
+    openDonateButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        resetDonateModal();
+        donateModal.classList.add('active');
+        navigationMenu.classList.remove('active');
+      });
+    });
+
+    closeDonateModal.addEventListener('click', () => {
+      donateModal.classList.remove('active');
+    });
+
+    donateModal.addEventListener('click', (e) => {
+      if (e.target === donateModal) {
+        donateModal.classList.remove('active');
+      }
+    });
+
+    donateForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('donate-name').value.trim();
+      const email = document.getElementById('donate-email').value.trim();
+      const amount = document.getElementById('donate-amount').value;
+      if (name && email && amount) {
+        donateForm.style.display = 'none';
+        donateFormHeader.style.display = 'none';
+        donateSuccessState.style.display = 'block';
+      }
+    });
+
+    const joinModal = document.getElementById('join-modal');
+    const openJoinButtons = document.querySelectorAll('.open-join-modal-btn');
+    const closeJoinModal = document.getElementById('close-join-modal');
+    const joinForm = document.getElementById('join-form');
+    const joinFormHeader = document.getElementById('join-form-header');
+    const joinSuccessState = document.getElementById('join-success-state');
+
+    const resetJoinModal = () => {
+      joinForm.reset();
+      joinForm.style.display = 'block';
+      joinFormHeader.style.display = 'block';
+      joinSuccessState.style.display = 'none';
+    };
+
+    openJoinButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        resetJoinModal();
+        joinModal.classList.add('active');
+        navigationMenu.classList.remove('active');
+      });
+    });
+
+    closeJoinModal.addEventListener('click', () => {
+      joinModal.classList.remove('active');
+    });
+
+    joinModal.addEventListener('click', (e) => {
+      if (e.target === joinModal) {
+        joinModal.classList.remove('active');
+      }
+    });
+
+    joinForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('join-name').value.trim();
+      const email = document.getElementById('join-email').value.trim();
+      const area = document.getElementById('join-area').value;
+      if (name && email && area) {
+        joinForm.style.display = 'none';
+        joinFormHeader.style.display = 'none';
+        joinSuccessState.style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html>
